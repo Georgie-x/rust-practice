@@ -1,44 +1,27 @@
-//Lyrics to the twelve days of Christmas. Type 'cargo run' in terminal to see
+mod number_guess;
+mod twelve_days;
+use std::io;
 
 fn main() {
-    let gifts = vec![
-        "A partridge in a pear tree!",
-        "Two turtle doves and",
-        "Three French hens,",
-        "Four calling birds,",
-        "Five gold rings,",
-        "Six geese a-laying,",
-        "Seven swans a-swimming,",
-        "Eight maids a-milking,",
-        "Nine ladies dancing,",
-        "Ten lords a-leaping,",
-        "Eleven pipers piping,",
-        "Twelve drummers drumming,",
-    ];
+    println!("Welcome to my Rust practice exercises");
+    let choices = vec!["number guess", "twelve days"];
+    let mut selected_module = String::new();
+    
+    loop{
+    
+        selected_module.clear();
 
-    let ordinal = vec![
-        "first",
-        "second",
-        "third",
-        "fourth",
-        "fifth",
-        "sixth",
-        "seventh",
-        "eighth",
-        "ninth",
-        "tenth",
-        "eleventh",
-        "twelfth"
-    ];
+    println!("Please choose which code to run: {:?}", choices.join(" "));
+     
+        io::stdin()
+            .read_line(&mut selected_module)
+            .expect("Please try again");
 
-    let mut previous_lines: Vec<String> = vec![];
-
-    for i in 1..13 {
-        println!("On the {} day of Christmas my true love gave to me...", ordinal[i-1]);
-    let formatted_line = format!("{}\n", gifts[i-1]);            
-        println!("{}{}", formatted_line, previous_lines.join(""));
-        previous_lines.insert(0, formatted_line);
-
+        match selected_module.trim() {
+            "number guess" => number_guess::number_guess(),
+            "twelve days" => twelve_days::twelve_days(),
+            _ => continue,
+        };
     }
 }
 
