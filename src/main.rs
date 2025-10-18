@@ -19,9 +19,9 @@ fn main() {
             .expect("Please try again");
 
         match selected_module.trim() {
-            "1" => number_guess::number_guess(),
-            "2" => twelve_days::twelve_days(),
-            "3" => fibo_finder::fibo_finder(),
+            "ng" => number_guess::number_guess(),
+            "td" => twelve_days::twelve_days(),
+            "ff" => fibo_finder::fibo_finder(),
             _ => continue,
         };
     }
